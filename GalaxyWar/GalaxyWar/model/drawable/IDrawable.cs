@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace GalaxyWar.model.drawable
 {
     interface IDrawable
     {
+
+        PointF Destination { get; set; }
+        PointF Location { get; set; }
+        SizeF Size { get; set; }
+        Bitmap Model { get; set; }
+        double Speed { get; set; }
+        int Alpha { get; set; }
+
     }
 }

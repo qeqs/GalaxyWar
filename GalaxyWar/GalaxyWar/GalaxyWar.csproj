@@ -46,7 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameController.cs" />
+    <Compile Include="controllers\GalaxyController.cs" />
+    <Compile Include="controllers\GameController.cs" />
+    <Compile Include="logic\Behavior.cs" />
+    <Compile Include="logic\CivilizationBehavior.cs" />
+    <Compile Include="logic\impls\AggresiveCivilizationBehavior.cs" />
+    <Compile Include="logic\impls\BomberBehavior.cs" />
+    <Compile Include="logic\impls\ColonyBehavior.cs" />
+    <Compile Include="logic\impls\DefenceCivilizationBehavior.cs" />
+    <Compile Include="logic\impls\FighterBehavior.cs" />
+    <Compile Include="logic\impls\PassiveCivilizationBehavior.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,13 +76,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -88,7 +98,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet_noresources.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
