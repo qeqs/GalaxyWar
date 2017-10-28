@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaxyWar.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,19 @@ namespace GalaxyWar
         public MainForm()
         {
             InitializeComponent();
+            controller = new GameController(new Galaxy());
+        }
+
+        private GameController controller;
+
+        private void buttonNew_Click(object sender, EventArgs e)
+        {
+            controller.Galaxy = new Galaxy();
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

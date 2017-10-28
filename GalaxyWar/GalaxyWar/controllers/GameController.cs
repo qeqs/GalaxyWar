@@ -14,9 +14,22 @@ namespace GalaxyWar
         private readonly double MS_PER_UPDATE = 10;
         private Galaxy galaxy;
 
+        public Galaxy Galaxy
+        {
+            get
+            {
+                return galaxy;
+            }
+
+            set
+            {
+                galaxy = value;
+            }
+        }
+
         public GameController(Galaxy galaxy)
         {
-            this.galaxy = galaxy;
+            this.Galaxy = galaxy;
         }
 
         public void gameLoop(Graphics graphics, UserInput userInput, Galaxy galaxy)
