@@ -1,4 +1,7 @@
-﻿using GalaxyWar.model;
+﻿using GalaxyWar.controllers;
+using GalaxyWar.logic;
+using GalaxyWar.logic.impls;
+using GalaxyWar.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,9 +22,16 @@ namespace GalaxyWar
             InitializeComponent();
             controller = new GameController(new Galaxy());
             this.DoubleBuffered = true;
+            this.comboBoxStrategy.Items.AddRange(new string[]
+            {
+                CivilizationStrategy.aggresive.ToString(),
+                CivilizationStrategy.defensive.ToString(),
+                CivilizationStrategy.passive.ToString()
+            });
         }
 
         private GameController controller;
+        private GalaxyBuilder builder;
         private volatile Bitmap field;
         private Thread thread;
 
@@ -82,49 +92,106 @@ namespace GalaxyWar
 
         private void MainForm_MouseMove(object sender, MouseEventArgs e)
         {
-
         }
 
         private void MainForm_MouseUp(object sender, MouseEventArgs e)
         {
-
+            enableAllControlls();
         }
 
         private void MainForm_MouseClick(object sender, MouseEventArgs e)
         {
-
+            enableAllControlls();
         }
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
             if (field == null || controller ==null || !controller.Started) return;
-
+            e.Graphics.Clear(Color.Black);
             e.Graphics.DrawImage(field, 0, 0);
+        }
+
+
+        private void buttonPlanet_Click(object sender, EventArgs e)
+        {
+            buttonPlanet.Enabled = !buttonPlanet.Enabled;
+
+        }
+
+        private void buttonStar_Click(object sender, EventArgs e)
+        {
+            buttonStar.Enabled = !buttonStar.Enabled;
+        }
+        
+
+        private void enableAllControlls()
+        {
+            if (buttonStar.Enabled && buttonPlanet.Enabled) return;
+
+            buttonStar.Enabled = !buttonStar.Enabled;
+            buttonPlanet.Enabled = !buttonPlanet.Enabled;
         }
 
         private void changeControlsVisibility()
         {
-            panelCivilizationCreation.Visible = !panelCivilizationCreation.Visible;
             panelObjectsCreation.Visible = !panelObjectsCreation.Visible;
             groupBoxInfo.Visible = !groupBoxInfo.Visible;
             buttonExit.Visible = !buttonExit.Visible;
             buttonNew.Visible = !buttonNew.Visible;
             buttonStart.Visible = !buttonStart.Visible;
         }
-
-        private void buttonPlanet_Click(object sender, EventArgs e)
+        
+        private void changeGalaxy(PointF location)
         {
+            if (!buttonStar.Enabled)
+            {
+                builder.buildStar(controller.Galaxy, location);
+            }
+            if (!buttonPlanet.Enabled)
+            {
+                Civilization civ = null;
+                if (checkBoxCivilization.Checked)
+                    civ = builder.buildCivilization(
+                             controller.Galaxy,
+                             chooseCivilizationStrategy((CivilizationStrategy)Enum.Parse(typeof(CivilizationStrategy),
+                             comboBoxStrategy.SelectedText
+                             )));
+
+                if (checkBoxRandom.Checked)
+                {
+                    builder.buildPlanet(controller.Galaxy, location, civ);
+                }
+                else
+                {
+                    builder.buildPlanet(controller.Galaxy, location,numericMetal.Value, numericCarbon.Value, numericOrganic.Value, civ);
+                }
+
+            }
 
         }
 
-        private void buttonStar_Click(object sender, EventArgs e)
+        private CivilizationBehavior chooseCivilizationStrategy(CivilizationStrategy strategy)
         {
+            switch (strategy)
+            {
+                case CivilizationStrategy.aggresive:
+                    return new AggresiveCivilizationBehavior();
+                case CivilizationStrategy.defensive:
+                    return new DefenceCivilizationBehavior();
+                case CivilizationStrategy.passive:
+                    return new PassiveCivilizationBehavior();
+                default: return null;
+            }
+
 
         }
 
-        private void buttonCivilization_Click(object sender, EventArgs e)
-        {
 
+
+        enum CivilizationStrategy
+        {
+            aggresive, defensive, passive
         }
+        
     }
 }

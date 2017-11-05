@@ -1,13 +1,9 @@
 ﻿using GalaxyWar.logic;
 using GalaxyWar.model;
 using GalaxyWar.model.drawable;
-using GalaxyWar.model.drawable.impls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GalaxyWar
@@ -68,7 +64,6 @@ namespace GalaxyWar
 
         private void gameLoop(Graphics graphics, Form form)
         {
-            if (!started) return;
 
             double current = DateTime.Now.Ticks;
             double elapsed = current - previous;
@@ -114,6 +109,7 @@ namespace GalaxyWar
 
         private void update(Galaxy galaxy)
         {
+            if (!started) return;
             galaxy.Civilizations.ForEach(civ => civ.Planets.ForEach(planet => civ.Behavior.produce(planet, civ)));
             galaxy.Civilizations.ForEach(civ => civ.Behavior.execute(galaxy, civ));
             galaxy.deleteAllDeadShips();

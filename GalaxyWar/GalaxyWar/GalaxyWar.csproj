@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controllers\GalaxyController.cs" />
+    <Compile Include="controllers\GalaxyBuilder.cs" />
     <Compile Include="controllers\GameController.cs" />
     <Compile Include="logic\AimSearcher.cs" />
     <Compile Include="logic\Behavior.cs" />
