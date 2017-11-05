@@ -1,4 +1,5 @@
-﻿using GalaxyWar.logic.impls;
+﻿
+using GalaxyWar.logic.impls.ships;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -31,6 +32,15 @@ namespace GalaxyWar.model.drawable.impls
             g.FillRectangle(new SolidBrush(color), 0F, 0F, Size.Width, Size.Height);
             g.DrawRectangle(Pens.Black, 0F, 0F, Size.Width, Size.Height);
             return bitmap;
+        }
+
+        public override void CalculateFight(IDrawable target)
+        {
+            if (!(target is Planet)) return;
+
+            Planet aim = (Planet)target;
+            aim.Civilization.Planets.Remove(aim);
+            aim.Civilization = null;
         }
     }
 }

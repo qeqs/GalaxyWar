@@ -1,4 +1,4 @@
-﻿using GalaxyWar.logic.impls;
+﻿using GalaxyWar.logic.impls.ships;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

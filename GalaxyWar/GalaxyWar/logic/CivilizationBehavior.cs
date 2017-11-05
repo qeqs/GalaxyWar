@@ -14,7 +14,7 @@ namespace GalaxyWar.logic
         protected double fighters = 0.0;
         protected double bombers = 0.0;
         protected double colonies = 0.0;
-
+        
 
         public virtual void produce(Planet planet, Civilization civilization)
         {

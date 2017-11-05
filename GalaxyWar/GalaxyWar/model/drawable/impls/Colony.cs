@@ -1,4 +1,4 @@
-﻿using GalaxyWar.logic.impls;
+﻿using GalaxyWar.logic.impls.ships;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -31,6 +31,18 @@ namespace GalaxyWar.model.drawable.impls
             g.FillEllipse(new SolidBrush(color), 0F, 0F, Size.Width, Size.Height);
             g.DrawEllipse(Pens.Black, 0F, 0F, Size.Width, Size.Height);
             return bitmap;
+        }
+
+        public override void CalculateFight(IDrawable target)
+        {
+            if (!(target is Planet)) return;
+
+            Planet aim = (Planet)target;
+            if (aim.Civilization == null)
+            {
+                aim.Civilization = Civilization;
+                Civilization.Planets.Add(aim);
+            }
         }
 
 

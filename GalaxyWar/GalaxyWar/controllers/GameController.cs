@@ -1,5 +1,7 @@
-﻿using GalaxyWar.model;
+﻿using GalaxyWar.logic;
+using GalaxyWar.model;
 using GalaxyWar.model.drawable;
+using GalaxyWar.model.drawable.impls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,6 +19,7 @@ namespace GalaxyWar
         double previous;
         double lag;
         bool started = false;
+        AimSearcher searcher = new AimSearcher();
 
         public Galaxy Galaxy
         {

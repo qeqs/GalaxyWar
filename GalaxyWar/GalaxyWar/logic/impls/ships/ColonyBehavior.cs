@@ -15,7 +15,7 @@ namespace GalaxyWar.logic.impls.ships
         {
             var aim = aimSearcher.search(
                 ship,
-                galaxy.SpaceObjects.FindAll(obj => obj is Planet).ToList<IDrawable>(),
+                galaxy.SpaceObjects.FindAll(obj => obj is Planet && obj.Civilization == null).ToList<IDrawable>(),
                 ship.Civilization.Behavior.AimSearcherRange);
             executeBehavior(galaxy, ship, state, aim);
         }
