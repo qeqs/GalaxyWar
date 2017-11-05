@@ -61,6 +61,42 @@ namespace GalaxyWar.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 1000.
+        /// </summary>
+        public static string aggressive_aim_range {
+            get {
+                return ResourceManager.GetString("aggressive_aim_range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.4.
+        /// </summary>
+        public static string aggressive_bomber {
+            get {
+                return ResourceManager.GetString("aggressive_bomber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.1.
+        /// </summary>
+        public static string aggressive_colony {
+            get {
+                return ResourceManager.GetString("aggressive_colony", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.5.
+        /// </summary>
+        public static string aggressive_fighter {
+            get {
+                return ResourceManager.GetString("aggressive_fighter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 50.
         /// </summary>
         public static string bomber_attack {
@@ -111,6 +147,15 @@ namespace GalaxyWar.Properties {
         public static string bomber_speed {
             get {
                 return ResourceManager.GetString("bomber_speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 1.
+        /// </summary>
+        public static string civ_produce_rate {
+            get {
+                return ResourceManager.GetString("civ_produce_rate", resourceCulture);
             }
         }
         
@@ -169,6 +214,42 @@ namespace GalaxyWar.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 400.
+        /// </summary>
+        public static string default_aim_range {
+            get {
+                return ResourceManager.GetString("default_aim_range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.3.
+        /// </summary>
+        public static string defence_bomber {
+            get {
+                return ResourceManager.GetString("defence_bomber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.3.
+        /// </summary>
+        public static string defence_colony {
+            get {
+                return ResourceManager.GetString("defence_colony", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.4.
+        /// </summary>
+        public static string defence_fighter {
+            get {
+                return ResourceManager.GetString("defence_fighter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 100.
         /// </summary>
         public static string fighter_attack {
@@ -223,6 +304,42 @@ namespace GalaxyWar.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 200.
+        /// </summary>
+        public static string passive_aim_range {
+            get {
+                return ResourceManager.GetString("passive_aim_range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.1.
+        /// </summary>
+        public static string passive_bomber {
+            get {
+                return ResourceManager.GetString("passive_bomber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.7.
+        /// </summary>
+        public static string passive_colony {
+            get {
+                return ResourceManager.GetString("passive_colony", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0.2.
+        /// </summary>
+        public static string passive_fighter {
+            get {
+                return ResourceManager.GetString("passive_fighter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap planet {
@@ -239,6 +356,15 @@ namespace GalaxyWar.Properties {
             get {
                 object obj = ResourceManager.GetObject("planet_noresources", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 5.
+        /// </summary>
+        public static string planets_speed {
+            get {
+                return ResourceManager.GetString("planets_speed", resourceCulture);
             }
         }
         

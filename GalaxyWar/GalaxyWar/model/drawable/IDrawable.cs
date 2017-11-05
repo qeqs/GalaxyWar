@@ -11,6 +11,7 @@ namespace GalaxyWar.model.drawable
         Bitmap Model { get; set; }
         double Speed { get; set; }
         int Alpha { get; set; }
+        Civilization Civilization { get; set; }
 
     }
 }

@@ -30,7 +30,16 @@ namespace GalaxyWar.model.drawable
         {
             this.Location = location;
             this.Destination = location;
-            civilization = civ;
+            Civilization = civ;
+        }
+
+        public virtual void CalculateFight(IDrawable target)
+        {
+            if (!(target is SpaceShip)) return;
+
+            SpaceShip aim = (SpaceShip)target;
+            aim.Health -= this.Atack;
+            this.Health -= aim.Atack;
         }
 
         public virtual PointF Destination
@@ -185,6 +194,19 @@ namespace GalaxyWar.model.drawable
             set
             {
 
+            }
+        }
+
+        public virtual Civilization Civilization
+        {
+            get
+            {
+                return civilization;
+            }
+
+            set
+            {
+                civilization = value;
             }
         }
     }

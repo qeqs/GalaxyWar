@@ -17,6 +17,8 @@ namespace GalaxyWar.model.drawable
         protected int hydrocarbon;
         protected int organic;
 
+        protected Civilization civilization;
+
         public virtual PointF Destination
         {
             get
@@ -131,6 +133,19 @@ namespace GalaxyWar.model.drawable
             set
             {
                 model = value;
+            }
+        }
+
+        public Civilization Civilization
+        {
+            get
+            {
+                return civilization
+            }
+
+            set
+            {
+                civilization = value;
             }
         }
     }

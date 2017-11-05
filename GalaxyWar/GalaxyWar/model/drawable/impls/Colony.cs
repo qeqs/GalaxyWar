@@ -11,7 +11,7 @@ namespace GalaxyWar.model.drawable.impls
     class Colony:SpaceShip
     {
 
-        public Colony(PointF location, Color color) : base(location)
+        public Colony(PointF location, Color color, Civilization civ) : base(location, civ)
         {
             this.Health = int.Parse(Properties.Resources.colony_health);
             this.Atack = int.Parse(Properties.Resources.colony_attack);

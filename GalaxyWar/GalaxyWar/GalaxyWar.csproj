@@ -48,14 +48,16 @@
   <ItemGroup>
     <Compile Include="controllers\GalaxyController.cs" />
     <Compile Include="controllers\GameController.cs" />
+    <Compile Include="logic\AimSearcher.cs" />
     <Compile Include="logic\Behavior.cs" />
     <Compile Include="logic\CivilizationBehavior.cs" />
-    <Compile Include="logic\impls\AggresiveCivilizationBehavior.cs" />
-    <Compile Include="logic\impls\BomberBehavior.cs" />
-    <Compile Include="logic\impls\ColonyBehavior.cs" />
-    <Compile Include="logic\impls\DefenceCivilizationBehavior.cs" />
-    <Compile Include="logic\impls\FighterBehavior.cs" />
-    <Compile Include="logic\impls\PassiveCivilizationBehavior.cs" />
+    <Compile Include="logic\impls\civ\AggresiveCivilizationBehavior.cs" />
+    <Compile Include="logic\impls\ships\AbstractShipBehavior.cs" />
+    <Compile Include="logic\impls\ships\BomberBehavior.cs" />
+    <Compile Include="logic\impls\ships\ColonyBehavior.cs" />
+    <Compile Include="logic\impls\civ\DefenceCivilizationBehavior.cs" />
+    <Compile Include="logic\impls\ships\FighterBehavior.cs" />
+    <Compile Include="logic\impls\civ\PassiveCivilizationBehavior.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +112,7 @@
   <ItemGroup>
     <None Include="Resources\planet_noresources.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

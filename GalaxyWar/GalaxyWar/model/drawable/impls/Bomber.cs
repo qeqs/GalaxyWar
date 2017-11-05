@@ -11,7 +11,7 @@ namespace GalaxyWar.model.drawable.impls
     class Bomber:SpaceShip
     {
         
-        public Bomber(PointF location, Color color):base(location)
+        public Bomber(PointF location, Color color, Civilization civ) : base(location, civ)
         {
             this.Health = int.Parse(Properties.Resources.bomber_health);
             this.Atack = int.Parse(Properties.Resources.bomber_attack);

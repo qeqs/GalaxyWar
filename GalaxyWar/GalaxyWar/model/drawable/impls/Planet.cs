@@ -33,6 +33,13 @@ namespace GalaxyWar.model.drawable.impls
             this.Organic = rand.Next();
         }
 
+        public void produce(SpaceShip ship)
+        {
+            Metal -= ship.Metal;
+            Hydrocarbon -= ship.Hydrocarbon;
+            Organic -= ship.Organic;
+        }
+
         public override int Metal
         {
             get
@@ -49,6 +56,40 @@ namespace GalaxyWar.model.drawable.impls
                     Model = Properties.Resources.planet_noresources;
             }
         }
-        
+
+        public override int Hydrocarbon
+        {
+            get
+            {
+                return this.hydrocarbon;
+            }
+            set
+            {
+                if (value <= 0)
+                    hydrocarbon = 0;
+                else
+                    hydrocarbon = value;
+                if (hydrocarbon == 0)
+                    Model = Properties.Resources.planet_noresources;
+            }
+        }
+
+        public override int Organic
+        {
+            get
+            {
+                return this.organic;
+            }
+            set
+            {
+                if (value <= 0)
+                    organic = 0;
+                else
+                    organic = value;
+                if (organic == 0)
+                    Model = Properties.Resources.planet_noresources;
+            }
+        }
+
     }
 }

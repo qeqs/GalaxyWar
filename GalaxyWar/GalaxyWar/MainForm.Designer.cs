@@ -28,40 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxInfo = new System.Windows.Forms.GroupBox();
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.buttonStar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelObjectsCreation = new System.Windows.Forms.Panel();
             this.labelOrganic = new System.Windows.Forms.Label();
             this.labelCarbon = new System.Windows.Forms.Label();
             this.labelMetal = new System.Windows.Forms.Label();
             this.numericCarbon = new System.Windows.Forms.NumericUpDown();
             this.numericOrganic = new System.Windows.Forms.NumericUpDown();
             this.numericMetal = new System.Windows.Forms.NumericUpDown();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelCivilizationCreation = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelCiv = new System.Windows.Forms.Label();
             this.buttonCivilization = new System.Windows.Forms.Button();
-            this.view = new System.Windows.Forms.PictureBox();
             this.buttonNew = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.panelObjectsCreation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericCarbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericOrganic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericMetal)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view)).BeginInit();
+            this.panelCivilizationCreation.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxInfo
             // 
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 263);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Info";
+            this.groupBoxInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxInfo.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxInfo.Name = "groupBoxInfo";
+            this.groupBoxInfo.Size = new System.Drawing.Size(248, 263);
+            this.groupBoxInfo.TabIndex = 0;
+            this.groupBoxInfo.TabStop = false;
+            this.groupBoxInfo.Text = "Info";
             // 
             // buttonPlanet
             // 
@@ -71,6 +70,7 @@
             this.buttonPlanet.TabIndex = 1;
             this.buttonPlanet.Text = "Planet";
             this.buttonPlanet.UseVisualStyleBackColor = true;
+            this.buttonPlanet.Click += new System.EventHandler(this.buttonPlanet_Click);
             // 
             // buttonStar
             // 
@@ -81,22 +81,23 @@
             this.buttonStar.TabIndex = 2;
             this.buttonStar.Text = "Star";
             this.buttonStar.UseVisualStyleBackColor = true;
+            this.buttonStar.Click += new System.EventHandler(this.buttonStar_Click);
             // 
-            // panel1
+            // panelObjectsCreation
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.labelOrganic);
-            this.panel1.Controls.Add(this.labelCarbon);
-            this.panel1.Controls.Add(this.labelMetal);
-            this.panel1.Controls.Add(this.numericCarbon);
-            this.panel1.Controls.Add(this.numericOrganic);
-            this.panel1.Controls.Add(this.numericMetal);
-            this.panel1.Controls.Add(this.buttonPlanet);
-            this.panel1.Controls.Add(this.buttonStar);
-            this.panel1.Location = new System.Drawing.Point(12, 281);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(248, 161);
-            this.panel1.TabIndex = 3;
+            this.panelObjectsCreation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelObjectsCreation.Controls.Add(this.labelOrganic);
+            this.panelObjectsCreation.Controls.Add(this.labelCarbon);
+            this.panelObjectsCreation.Controls.Add(this.labelMetal);
+            this.panelObjectsCreation.Controls.Add(this.numericCarbon);
+            this.panelObjectsCreation.Controls.Add(this.numericOrganic);
+            this.panelObjectsCreation.Controls.Add(this.numericMetal);
+            this.panelObjectsCreation.Controls.Add(this.buttonPlanet);
+            this.panelObjectsCreation.Controls.Add(this.buttonStar);
+            this.panelObjectsCreation.Location = new System.Drawing.Point(12, 281);
+            this.panelObjectsCreation.Name = "panelObjectsCreation";
+            this.panelObjectsCreation.Size = new System.Drawing.Size(248, 161);
+            this.panelObjectsCreation.TabIndex = 3;
             // 
             // labelOrganic
             // 
@@ -146,16 +147,16 @@
             this.numericMetal.Size = new System.Drawing.Size(120, 20);
             this.numericMetal.TabIndex = 3;
             // 
-            // panel2
+            // panelCivilizationCreation
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.labelCiv);
-            this.panel2.Controls.Add(this.buttonCivilization);
-            this.panel2.Location = new System.Drawing.Point(12, 448);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(248, 104);
-            this.panel2.TabIndex = 9;
+            this.panelCivilizationCreation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCivilizationCreation.Controls.Add(this.comboBox1);
+            this.panelCivilizationCreation.Controls.Add(this.labelCiv);
+            this.panelCivilizationCreation.Controls.Add(this.buttonCivilization);
+            this.panelCivilizationCreation.Location = new System.Drawing.Point(12, 448);
+            this.panelCivilizationCreation.Name = "panelCivilizationCreation";
+            this.panelCivilizationCreation.Size = new System.Drawing.Size(248, 104);
+            this.panelCivilizationCreation.TabIndex = 9;
             // 
             // comboBox1
             // 
@@ -182,14 +183,7 @@
             this.buttonCivilization.TabIndex = 1;
             this.buttonCivilization.Text = "Civilization";
             this.buttonCivilization.UseVisualStyleBackColor = true;
-            // 
-            // view
-            // 
-            this.view.Location = new System.Drawing.Point(266, 12);
-            this.view.Name = "view";
-            this.view.Size = new System.Drawing.Size(770, 658);
-            this.view.TabIndex = 10;
-            this.view.TabStop = false;
+            this.buttonCivilization.Click += new System.EventHandler(this.buttonCivilization_Click);
             // 
             // buttonNew
             // 
@@ -211,53 +205,69 @@
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Location = new System.Drawing.Point(12, 626);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(248, 23);
+            this.buttonExit.TabIndex = 13;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 682);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.buttonNew);
-            this.Controls.Add(this.view);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panelCivilizationCreation);
+            this.Controls.Add(this.panelObjectsCreation);
+            this.Controls.Add(this.groupBoxInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GalaxyWar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseUp);
+            this.panelObjectsCreation.ResumeLayout(false);
+            this.panelObjectsCreation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericCarbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericOrganic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericMetal)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view)).EndInit();
+            this.panelCivilizationCreation.ResumeLayout(false);
+            this.panelCivilizationCreation.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxInfo;
         private System.Windows.Forms.Button buttonPlanet;
         private System.Windows.Forms.Button buttonStar;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelObjectsCreation;
         private System.Windows.Forms.NumericUpDown numericCarbon;
         private System.Windows.Forms.NumericUpDown numericOrganic;
         private System.Windows.Forms.NumericUpDown numericMetal;
         private System.Windows.Forms.Label labelOrganic;
         private System.Windows.Forms.Label labelCarbon;
         private System.Windows.Forms.Label labelMetal;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelCivilizationCreation;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label labelCiv;
         private System.Windows.Forms.Button buttonCivilization;
-        private System.Windows.Forms.PictureBox view;
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.Button buttonExit;
     }
 }
 

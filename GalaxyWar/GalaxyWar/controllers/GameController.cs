@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GalaxyWar
 {
@@ -13,6 +14,9 @@ namespace GalaxyWar
     {
         private readonly double MS_PER_UPDATE = 10;
         private Galaxy galaxy;
+        double previous;
+        double lag;
+        bool started = false;
 
         public Galaxy Galaxy
         {
@@ -27,42 +31,64 @@ namespace GalaxyWar
             }
         }
 
+        public bool Started
+        {
+            get
+            {
+                return started;
+            }
+
+            set
+            {
+                started = value;
+            }
+        }
+
         public GameController(Galaxy galaxy)
         {
             this.Galaxy = galaxy;
         }
 
-        public void gameLoop(Graphics graphics, UserInput userInput, Galaxy galaxy)
+        public void init()
         {
-            double previous = DateTime.Now.Ticks;
-            double lag = 0.0;
-            while (true)//change in case of timer use
-            {
-                double current = DateTime.Now.Ticks;
-                double elapsed = current - previous;
-                previous = current;
-                lag += elapsed;
-
-                processInput(userInput, galaxy);
-
-                while (lag >= MS_PER_UPDATE)
-                {
-                    update(galaxy);
-                    lag -= MS_PER_UPDATE;
-                }
-
-                render(graphics, galaxy, lag / MS_PER_UPDATE);
-            }
+            previous = DateTime.Now.Ticks;
+            lag = 0.0;
         }
 
-        private void render(Graphics graphics, Galaxy galaxy, double lag)
+        public void loop(object data)
+        {
+            Dictionary<String, Object> param = (Dictionary<String, Object>)data;
+            Graphics graphics = (Graphics)param["graphics"];
+            Form form = (Form)param["form"];
+            gameLoop(graphics, form);
+        }
+
+        private void gameLoop(Graphics graphics, Form form)
+        {
+            if (!started) return;
+
+            double current = DateTime.Now.Ticks;
+            double elapsed = current - previous;
+            previous = current;
+            lag += elapsed;
+
+            processInput(form, galaxy);
+
+            while (lag >= MS_PER_UPDATE)
+            {
+                update(galaxy);
+                lag -= MS_PER_UPDATE;
+            }
+
+            render(graphics, galaxy, lag / MS_PER_UPDATE);
+            form.Invalidate();//possibly would be changed to call event handle
+        }
+
+        private void render(Graphics graphics, Galaxy galaxy, double _lag)
         {
             graphics.Clear(Color.Black);
 
-            List<IDrawable> drawables = new List<IDrawable>();
-            drawables.AddRange(galaxy.SpaceObjects);
-            foreach (Civilization civ in galaxy.Civilizations)
-                drawables.AddRange(civ.Fleet);
+            List<IDrawable> drawables = galaxy.getAllDrawables();
             drawables.Sort((a, b) => a.Alpha > b.Alpha ? 1 : -1);
 
             foreach (IDrawable drawable in drawables)
@@ -73,8 +99,8 @@ namespace GalaxyWar
                 double y = des.Y - loc.Y;
                 double c = Math.Sqrt(x * x + y * y);
 
-                loc.X = (float)(lag * drawable.Speed * Math.Cos(x / c));
-                loc.Y = (float)(lag * drawable.Speed * Math.Cos(y / c));
+                loc.X = (float)(_lag * drawable.Speed * x / c);
+                loc.Y = (float)(_lag * drawable.Speed * y / c);
                 drawable.Location = loc;
 
                 graphics.DrawImage(drawable.Model as Image,
@@ -87,11 +113,13 @@ namespace GalaxyWar
         {
             galaxy.Civilizations.ForEach(civ => civ.Planets.ForEach(planet => civ.Behavior.produce(planet, civ)));
             galaxy.Civilizations.ForEach(civ => civ.Behavior.execute(galaxy, civ));
+            galaxy.deleteAllDeadShips();
         }
 
-        private void processInput(UserInput userInput, Galaxy galaxy)
+        private void processInput(Form form, Galaxy galaxy)
         {
-            throw new NotImplementedException();
+            return;
+            //MainForm mainForm = (MainForm)form;
         }
     }
 }

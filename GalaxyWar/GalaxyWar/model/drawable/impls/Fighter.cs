@@ -10,7 +10,7 @@ namespace GalaxyWar.model.drawable.impls
 {
     class Fighter:SpaceShip
     {
-        public Fighter(PointF location, Color color) : base(location)
+        public Fighter(PointF location, Color color, Civilization civ) : base(location, civ)
         {
             this.Health = int.Parse(Properties.Resources.fighter_health);
             this.Atack = int.Parse(Properties.Resources.fighter_attack);
@@ -31,5 +31,6 @@ namespace GalaxyWar.model.drawable.impls
             g.DrawEllipse(Pens.Black, 0F, 0F, Size.Width, Size.Height);
             return bitmap;
         }
+        
     }
 }
