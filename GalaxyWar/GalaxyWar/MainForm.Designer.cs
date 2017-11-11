@@ -28,23 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBoxInfo = new System.Windows.Forms.GroupBox();
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.buttonStar = new System.Windows.Forms.Button();
             this.panelObjectsCreation = new System.Windows.Forms.Panel();
+            this.checkBoxRandom = new System.Windows.Forms.CheckBox();
+            this.checkBoxCivilization = new System.Windows.Forms.CheckBox();
+            this.comboBoxStrategy = new System.Windows.Forms.ComboBox();
             this.labelOrganic = new System.Windows.Forms.Label();
+            this.labelCiv = new System.Windows.Forms.Label();
             this.labelCarbon = new System.Windows.Forms.Label();
             this.labelMetal = new System.Windows.Forms.Label();
             this.numericCarbon = new System.Windows.Forms.NumericUpDown();
             this.numericOrganic = new System.Windows.Forms.NumericUpDown();
             this.numericMetal = new System.Windows.Forms.NumericUpDown();
-            this.checkBoxCivilization = new System.Windows.Forms.CheckBox();
-            this.comboBoxStrategy = new System.Windows.Forms.ComboBox();
-            this.labelCiv = new System.Windows.Forms.Label();
             this.buttonNew = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.checkBoxRandom = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelObjectsCreation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericCarbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericOrganic)).BeginInit();
@@ -73,7 +75,6 @@
             // 
             // buttonStar
             // 
-            this.buttonStar.Enabled = false;
             this.buttonStar.Location = new System.Drawing.Point(126, 12);
             this.buttonStar.Name = "buttonStar";
             this.buttonStar.Size = new System.Drawing.Size(117, 23);
@@ -102,6 +103,34 @@
             this.panelObjectsCreation.Size = new System.Drawing.Size(248, 249);
             this.panelObjectsCreation.TabIndex = 3;
             // 
+            // checkBoxRandom
+            // 
+            this.checkBoxRandom.AutoSize = true;
+            this.checkBoxRandom.Location = new System.Drawing.Point(126, 155);
+            this.checkBoxRandom.Name = "checkBoxRandom";
+            this.checkBoxRandom.Size = new System.Drawing.Size(115, 17);
+            this.checkBoxRandom.TabIndex = 10;
+            this.checkBoxRandom.Text = "Random resources";
+            this.checkBoxRandom.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCivilization
+            // 
+            this.checkBoxCivilization.AutoSize = true;
+            this.checkBoxCivilization.Location = new System.Drawing.Point(6, 155);
+            this.checkBoxCivilization.Name = "checkBoxCivilization";
+            this.checkBoxCivilization.Size = new System.Drawing.Size(99, 17);
+            this.checkBoxCivilization.TabIndex = 9;
+            this.checkBoxCivilization.Text = "With civilization";
+            this.checkBoxCivilization.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxStrategy
+            // 
+            this.comboBoxStrategy.FormattingEnabled = true;
+            this.comboBoxStrategy.Location = new System.Drawing.Point(122, 183);
+            this.comboBoxStrategy.Name = "comboBoxStrategy";
+            this.comboBoxStrategy.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxStrategy.TabIndex = 7;
+            // 
             // labelOrganic
             // 
             this.labelOrganic.AutoSize = true;
@@ -110,6 +139,15 @@
             this.labelOrganic.Size = new System.Drawing.Size(44, 13);
             this.labelOrganic.TabIndex = 8;
             this.labelOrganic.Text = "Organic";
+            // 
+            // labelCiv
+            // 
+            this.labelCiv.AutoSize = true;
+            this.labelCiv.Location = new System.Drawing.Point(3, 186);
+            this.labelCiv.Name = "labelCiv";
+            this.labelCiv.Size = new System.Drawing.Size(46, 13);
+            this.labelCiv.TabIndex = 6;
+            this.labelCiv.Text = "Strategy";
             // 
             // labelCarbon
             // 
@@ -150,33 +188,6 @@
             this.numericMetal.Size = new System.Drawing.Size(120, 20);
             this.numericMetal.TabIndex = 3;
             // 
-            // checkBoxCivilization
-            // 
-            this.checkBoxCivilization.AutoSize = true;
-            this.checkBoxCivilization.Location = new System.Drawing.Point(6, 155);
-            this.checkBoxCivilization.Name = "checkBoxCivilization";
-            this.checkBoxCivilization.Size = new System.Drawing.Size(99, 17);
-            this.checkBoxCivilization.TabIndex = 9;
-            this.checkBoxCivilization.Text = "With civilization";
-            this.checkBoxCivilization.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxStrategy
-            // 
-            this.comboBoxStrategy.FormattingEnabled = true;
-            this.comboBoxStrategy.Location = new System.Drawing.Point(122, 183);
-            this.comboBoxStrategy.Name = "comboBoxStrategy";
-            this.comboBoxStrategy.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxStrategy.TabIndex = 7;
-            // 
-            // labelCiv
-            // 
-            this.labelCiv.AutoSize = true;
-            this.labelCiv.Location = new System.Drawing.Point(3, 186);
-            this.labelCiv.Name = "labelCiv";
-            this.labelCiv.Size = new System.Drawing.Size(46, 13);
-            this.labelCiv.TabIndex = 6;
-            this.labelCiv.Text = "Strategy";
-            // 
             // buttonNew
             // 
             this.buttonNew.Location = new System.Drawing.Point(12, 536);
@@ -207,15 +218,9 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // checkBoxRandom
+            // timer1
             // 
-            this.checkBoxRandom.AutoSize = true;
-            this.checkBoxRandom.Location = new System.Drawing.Point(126, 155);
-            this.checkBoxRandom.Name = "checkBoxRandom";
-            this.checkBoxRandom.Size = new System.Drawing.Size(115, 17);
-            this.checkBoxRandom.TabIndex = 10;
-            this.checkBoxRandom.Text = "Random resources";
-            this.checkBoxRandom.UseVisualStyleBackColor = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainForm
             // 
@@ -228,15 +233,17 @@
             this.Controls.Add(this.panelObjectsCreation);
             this.Controls.Add(this.groupBoxInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GalaxyWar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseUp);
             this.panelObjectsCreation.ResumeLayout(false);
@@ -267,6 +274,7 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.CheckBox checkBoxCivilization;
         private System.Windows.Forms.CheckBox checkBoxRandom;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -360,7 +360,7 @@ namespace GalaxyWar.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 5.
+        ///   Ищет локализованную строку, похожую на 15.
         /// </summary>
         public static string planets_speed {
             get {

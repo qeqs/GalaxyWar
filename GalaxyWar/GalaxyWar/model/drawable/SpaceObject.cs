@@ -140,12 +140,25 @@ namespace GalaxyWar.model.drawable
         {
             get
             {
-                return civilization
+                return civilization;
             }
 
             set
             {
                 civilization = value;
+            }
+        }
+
+        public PointF Center
+        {
+            get
+            {
+                return new PointF(Location.X + Size.Width / 2, Location.Y + Size.Height / 2);
+            }
+
+            set
+            {
+               location = new PointF(value.X - Size.Width / 2, value.Y - Size.Height / 2);
             }
         }
     }

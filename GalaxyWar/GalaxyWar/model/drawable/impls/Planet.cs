@@ -5,9 +5,12 @@ namespace GalaxyWar.model.drawable.impls
 {
     class Planet:SpaceObject
     {
+        private PointF destination;
+
         public Planet(PointF location, int metal, int carbon, int organic)
         {
             this.Location = location;
+            destination = location;
             this.Model = Properties.Resources.planet;
             this.Size = new SizeF(100, 100);
 
@@ -87,5 +90,29 @@ namespace GalaxyWar.model.drawable.impls
             }
         }
 
+        public override double Speed
+        {
+            get
+            {
+                return double.Parse(Properties.Resources.planets_speed);
+            }
+
+            set
+            {
+            }
+        }
+
+        public override PointF Destination
+        {
+            get
+            {
+                return destination;
+            }
+
+            set
+            {
+                destination = value;
+            }
+        }
     }
 }

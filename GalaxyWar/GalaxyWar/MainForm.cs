@@ -21,6 +21,7 @@ namespace GalaxyWar
         {
             InitializeComponent();
             controller = new GameController(new Galaxy());
+            builder = new GalaxyBuilder();
             this.DoubleBuffered = true;
             this.comboBoxStrategy.Items.AddRange(new string[]
             {
@@ -28,87 +29,90 @@ namespace GalaxyWar
                 CivilizationStrategy.defensive.ToString(),
                 CivilizationStrategy.passive.ToString()
             });
-        }
 
+            timer1.Interval = 1;
+            controller.OnRender += ((sender, args) => draw());
+
+        }
         private GameController controller;
         private GalaxyBuilder builder;
         private volatile Bitmap field;
-        private Thread thread;
+        private Point mouseLoc;
+        private Graphics graphics;
+        private Graphics fieldGraphics;
+
+        private void init()
+        {
+            controller.Galaxy = new Galaxy();
+            controller.Started = false;
+            field = new Bitmap(this.Width, this.Height);
+            fieldGraphics = Graphics.FromImage(field);
+        }
+
+        private void draw()
+        {
+            constructDraw(fieldGraphics);
+            graphics.DrawImage(field as Image, 0, 0);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            controller.Galaxy = new Galaxy();
-            field = new Bitmap(this.Width, this.Height);
-            thread = new Thread(controller.loop);
+            init();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
             changeControlsVisibility();
-            Dictionary<String, Object> param = new Dictionary<string, object>();
-            param.Add("graphics", Graphics.FromImage(field as Image));
-            param.Add("form", this);
-            thread.Start(param);
-            controller.Started = !controller.Started;
+            controller.Started = true;
+            controller.init();
+            timer1.Start();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (thread != null)
-                {
-                    thread.Join();
-                    thread.Interrupt();
-                }
-            }
-            finally
-            {
                 this.Close();
-            }
-
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (thread == null) return;
-
-            if(e.KeyCode == Keys.Pause || e.KeyCode == Keys.Escape)
+            GameController.Log("Button has been pressed");
+            if (e.KeyCode == Keys.Pause || e.KeyCode == Keys.Escape)
             {
                 changeControlsVisibility();
                 controller.Started = !controller.Started;
+                timer1.Stop();
             }
+
+        }
+
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            
         }
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-        }
-
-        private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
 
         }
 
         private void MainForm_MouseMove(object sender, MouseEventArgs e)
         {
+            if (controller.Started) return;
+            mouseLoc = e.Location;
+            draw();
+
         }
 
         private void MainForm_MouseUp(object sender, MouseEventArgs e)
         {
+            if (controller == null || controller.Started) return;
+            changeGalaxy(e.Location);
             enableAllControlls();
-        }
-
-        private void MainForm_MouseClick(object sender, MouseEventArgs e)
-        {
-            enableAllControlls();
-        }
-
-        private void MainForm_Paint(object sender, PaintEventArgs e)
-        {
-            if (field == null || controller ==null || !controller.Started) return;
-            e.Graphics.Clear(Color.Black);
-            e.Graphics.DrawImage(field, 0, 0);
         }
 
 
@@ -128,8 +132,8 @@ namespace GalaxyWar
         {
             if (buttonStar.Enabled && buttonPlanet.Enabled) return;
 
-            buttonStar.Enabled = !buttonStar.Enabled;
-            buttonPlanet.Enabled = !buttonPlanet.Enabled;
+            buttonStar.Enabled = true;
+            buttonPlanet.Enabled = true;
         }
 
         private void changeControlsVisibility()
@@ -186,12 +190,43 @@ namespace GalaxyWar
 
         }
 
+        public void constructDraw(Graphics g)
+        {
+            if (controller == null && controller.Started) return;
 
+            g.Clear(Color.Black);
+            controller.draw(g);
+
+            int x = this.Size.Width;
+            int y = this.Size.Height;
+            string locationString = mouseLoc.X + ":" + mouseLoc.Y;
+            Size textSize = TextRenderer.MeasureText(locationString, Font, Size);
+
+            g.DrawString(locationString, Font, Brushes.White, x - textSize.Width, 0 + textSize.Height);
+        }
+        
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+            controller.gameLoop(fieldGraphics);
+            graphics.DrawImage(field as Image, 0, 0);
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            graphics = CreateGraphics();
+            init();
+            draw();
+        }
+
+        private void MainForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         enum CivilizationStrategy
         {
             aggresive, defensive, passive
         }
-        
     }
 }

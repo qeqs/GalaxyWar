@@ -209,5 +209,18 @@ namespace GalaxyWar.model.drawable
                 civilization = value;
             }
         }
+
+        public PointF Center
+        {
+            get
+            {
+                return new PointF(Location.X + Size.Width / 2, Location.Y + Size.Height / 2);
+            }
+
+            set
+            {
+                location = new PointF(value.X - Size.Width / 2, value.Y - Size.Height / 2);
+            }
+        }
     }
 }

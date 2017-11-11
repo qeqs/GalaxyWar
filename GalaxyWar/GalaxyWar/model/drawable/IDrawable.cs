@@ -12,6 +12,7 @@ namespace GalaxyWar.model.drawable
         double Speed { get; set; }
         int Alpha { get; set; }
         Civilization Civilization { get; set; }
+        PointF Center { get; set; }
 
     }
 }

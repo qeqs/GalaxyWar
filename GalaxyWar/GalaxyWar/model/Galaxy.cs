@@ -1,4 +1,6 @@
-﻿using GalaxyWar.model.drawable;
+﻿using GalaxyWar.logic;
+using GalaxyWar.model.drawable;
+using GalaxyWar.model.drawable.impls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +11,10 @@ namespace GalaxyWar.model
 {
     class Galaxy
     {
-        private List<Civilization> civilizations;
-        private List<SpaceObject> spaceObjects;
+        private List<Civilization> civilizations = new List<Civilization>();
+        private List<SpaceObject> spaceObjects = new List<SpaceObject>();
+
+        private AimSearcher aimSearcher = new AimSearcher();
 
         public List<IDrawable> getAllDrawables()
         {
@@ -18,6 +22,7 @@ namespace GalaxyWar.model
             drawables.AddRange(SpaceObjects);
             foreach (Civilization civ in Civilizations)
                 drawables.AddRange(civ.Fleet);
+            drawables.Sort((a, b) => a.Alpha > b.Alpha ? 1 : -1);
             return drawables;
         }
 
@@ -33,6 +38,13 @@ namespace GalaxyWar.model
         {
             foreach (Civilization civ in Civilizations)
                 civ.Fleet.RemoveAll(ship => ship.Health <= 0);
+        }
+
+        public void planetsMovement()
+        {
+            spaceObjects
+                .FindAll(obj => obj is Planet)
+                .ForEach(planet => aimSearcher.pending(this, planet));
         }
 
         public List<Civilization> Civilizations

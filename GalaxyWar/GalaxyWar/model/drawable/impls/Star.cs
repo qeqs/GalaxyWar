@@ -12,6 +12,8 @@ namespace GalaxyWar.model.drawable.impls
         public Star(PointF location)
         {
             this.Location = location;
+            this.Model = Properties.Resources.star;
+            this.Size = new SizeF(200, 200);
         }
     }
 }

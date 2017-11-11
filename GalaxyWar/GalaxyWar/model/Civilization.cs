@@ -12,8 +12,8 @@ namespace GalaxyWar.model
 {
     class Civilization
     {
-        private List<SpaceShip> fleet;
-        private List<Planet> planets;
+        private List<SpaceShip> fleet = new List<SpaceShip>();
+        private List<Planet> planets = new List<Planet>();
         private CivilizationBehavior behavior;
         private Color color;
 
